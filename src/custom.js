@@ -22,6 +22,10 @@ loginButton.addEventListener('click', (e) => {
 
     fetch(apiMainUrl + apiEndpoint)
 
+
+    console.log(requestBody)
+
+
 })
 
-console.log(requestBody)
+
