@@ -21,10 +21,12 @@ if (logoutBtn) {
 // Rendering projects
 
 let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
-let dropDownList = document.querySelector('.options-wrapper')
+
 
 fetch(projectsApi).then(response => response.json())
     .then(projects => {
+
+        let dropDownList = document.querySelector('.options-wrapper')
 
         projects.forEach(project => {
 
