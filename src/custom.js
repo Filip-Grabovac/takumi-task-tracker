@@ -11,11 +11,11 @@ loginButton.addEventListener('click', (e) => {
     e.preventDefault()
 
     let email = document.querySelector('#Email').value
-    let papssword = document.querySelector('#Password').value
+    let passsword = document.querySelector('#Password').value
 
     let requestBody = {
         email,
-        papssword
+        passsword
     }
 
     let apiEndpoint = apiMainUrl + '/auth/login'
