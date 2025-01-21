@@ -50,7 +50,7 @@ fetch(projectsApi)
     .then(data => {
         console.log("Odgovor sa servera:", data); // Logujemo podatke da vidimo strukturu
 
-        const projects = data.result1; // Pristupamo nizu result1
+        /* const projects = data.result1; // Pristupamo nizu result1 */
 
         if (!Array.isArray(projects)) {
             console.error("Greška: `result1` nije niz.");
