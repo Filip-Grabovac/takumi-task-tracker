@@ -20,7 +20,7 @@ if (logoutBtn) {
 
 // Rendering projects
 
-/* let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
+let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
 
 
 fetch(projectsApi).then(response => response.json())
@@ -41,16 +41,16 @@ fetch(projectsApi).then(response => response.json())
             dropDownList.insertAdjacentHTML("afterbegin", html);
         })
 
-    }) */
+    })
 
-let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects";
+/* let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects";
 
 fetch(projectsApi)
     .then(response => response.json())
     .then(data => {
         console.log("Odgovor sa servera:", data); // Logujemo podatke da vidimo strukturu
 
-        /* const projects = data.result1; // Pristupamo nizu result1 */
+        const projects = data.result1; // Pristupamo nizu result1
 
         if (!Array.isArray(projects)) {
             console.error("Greška: `result1` nije niz.");
@@ -71,4 +71,4 @@ fetch(projectsApi)
     })
     .catch(error => {
         console.error("Greška prilikom dohvaćanja podataka:", error);
-    });
+    }); */
