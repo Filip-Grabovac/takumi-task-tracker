@@ -31,8 +31,9 @@ loginButton.addEventListener('click', (e) => {
         .then((data) => {
             if (data.authToken) {
                 localStorage.setItem('authToken', data.authToken);
+                window.location.href = 'briliaton-com.webflow.io/admin-dashboard'
             }
-        })
+        });
 
 })
 
