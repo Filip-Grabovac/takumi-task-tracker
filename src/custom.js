@@ -18,13 +18,16 @@ loginButton.addEventListener('click', (e) => {
         papssword
     }
 
-    let apiEndpoint = ('/auth/login')
+    let apiEndpoint = apiMainUrl + '/auth/login'
 
-    fetch(apiMainUrl + apiEndpoint)
-
-
-    console.log(email)
-
+    fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+        .then(response => response.json())
 
 })
 
