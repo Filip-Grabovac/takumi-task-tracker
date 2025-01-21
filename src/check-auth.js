@@ -17,7 +17,14 @@ async function checkAuth() {
 
         // Čekanje na odgovor i konvertovanje u JSON
         const data = await response.json();
-        console.log(data); // Logovanje podataka odmah u funkciji
+
+        if (data.code === 'ERROR_CODE_UNAUTHORIZED') {
+
+            window.location.href = 'https://briliaton-com.webflow.io/login';
+
+
+
+        }
 
         // Vraćanje odgovora sa servera
         return data;
