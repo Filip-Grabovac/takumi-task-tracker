@@ -22,7 +22,7 @@ if (logoutBtn) {
 
 let apiEndpoint = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
 
-fetch(apiEndpoint).then(response => response.json)
+fetch(apiEndpoint).then(response => response.json())
     .then(projects => {
         console.log(projects)
     })
