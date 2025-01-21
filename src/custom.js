@@ -33,14 +33,12 @@ loginButton.addEventListener('click', (e) => {
                 localStorage.setItem('authToken', data.authToken);
 
                 if (Number(data.role_id) === 1) {
-                    console.log('role_id', data.role_id)
-                    window.location.href = 'https://briliaton-com.webflow.io/admin-dashboard'
+
+                    window.location.href = 'https://briliaton-com.webflow.io/admin-dashboard';
                 } else {
-                    window.location.href = 'https://briliaton-com.webflow.io/user-dashboard'
+                    window.location.href = 'https://briliaton-com.webflow.io/user-dashboard';
 
                 }
-
-
 
             }
         });
