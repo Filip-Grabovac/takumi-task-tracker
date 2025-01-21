@@ -26,3 +26,5 @@ function checkAuth() {
             console.error('Greška pri pozivanju API-ja:', error);
         });
 }
+
+window.checkAuth = checkAuth
