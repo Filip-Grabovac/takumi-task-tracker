@@ -1,5 +1,5 @@
 
-
+'use strict';
 // LOGIN //
 
 let apiMainUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb'
@@ -31,7 +31,7 @@ loginButton.addEventListener('click', (e) => {
         .then((data) => {
             if (data.authToken) {
                 localStorage.setItem('authToken', data.authToken);
-                window.location.href = 'https://briliaton-com.webflow.io/admin-dashboard'
+                /* window.location.href = 'https://briliaton-com.webflow.io/admin-dashboard' */
             }
         });
 
