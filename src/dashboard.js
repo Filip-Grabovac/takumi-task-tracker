@@ -4,3 +4,15 @@ checkAuth().then(data => {
         document.querySelector('.add-project-btn').remove()
     }
 });
+
+let logoutBtn = document.querySelector('.logout-button');
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener('click', () => {
+
+        window.localStorage.clear();
+        window.location.href = 'https://briliaton-com.webflow.io/log-in';
+    })
+
+}
