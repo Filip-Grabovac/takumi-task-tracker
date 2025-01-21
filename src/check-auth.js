@@ -1,3 +1,4 @@
+// check-auth.js
 async function checkAuth() {
     // Preuzimanje tokena iz local storage
     const authToken = localStorage.getItem('authToken');
@@ -16,7 +17,8 @@ async function checkAuth() {
 
         // Čekanje na odgovor i konvertovanje u JSON
         const data = await response.json();
-        console.log(data)
+        console.log(data); // Logovanje podataka odmah u funkciji
+
         // Vraćanje odgovora sa servera
         return data;
     } catch (error) {
@@ -25,3 +27,8 @@ async function checkAuth() {
 }
 
 window.checkAuth = checkAuth;
+
+// dashboard.js
+checkAuth().then(data => {
+    console.log(data); // Logovanje podataka nakon što je funkcija završena
+});
