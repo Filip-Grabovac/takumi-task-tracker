@@ -35,7 +35,4 @@ async function checkAuth() {
 
 window.checkAuth = checkAuth;
 
-// dashboard.js
-checkAuth().then(data => {
-    console.log(data); // Logovanje podataka nakon što je funkcija završena
-});
+
