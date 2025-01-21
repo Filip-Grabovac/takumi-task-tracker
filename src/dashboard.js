@@ -20,9 +20,9 @@ if (logoutBtn) {
 
 // Rendering projects
 
-let apiEndpoint = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
+let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects"
 
-fetch(apiEndpoint).then(response => response.json())
+fetch(projectsApi).then(response => response.json())
     .then(projects => {
         console.log(projects)
     })
