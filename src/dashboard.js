@@ -1,4 +1,3 @@
-
-
-
-console.log(checkAuth());
+checkAuth().then(data => {
+    console.log(data);
+});
