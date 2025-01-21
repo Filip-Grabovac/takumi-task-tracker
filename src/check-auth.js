@@ -16,7 +16,7 @@ async function checkAuth() {
 
         // Čekanje na odgovor i konvertovanje u JSON
         const data = await response.json();
-
+        console.log(data)
         // Vraćanje odgovora sa servera
         return data;
     } catch (error) {
