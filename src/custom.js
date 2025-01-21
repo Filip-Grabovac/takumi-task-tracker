@@ -33,9 +33,9 @@ loginButton.addEventListener('click', (e) => {
                 localStorage.setItem('authToken', data.authToken);
 
                 if (data.role_id === 1) {
-                    window.location.href = 'briliaton-com.webflow.io/admin-dashboard'
+                    window.location.href = 'https://briliaton-com.webflow.io/admin-dashboard'
                 } else {
-                    window.location.href = 'briliaton-com.webflow.io/user-dashboard'
+                    window.location.href = 'https://briliaton-com.webflow.io/user-dashboard'
 
                 }
 
