@@ -28,6 +28,11 @@ loginButton.addEventListener('click', (e) => {
         body: JSON.stringify(requestBody)
     })
         .then(response => response.json())
+        .then((data) => {
+            if (data.authToken) {
+                localStorage.setItem('authToken', data.authToken);
+            }
+        })
 
 })
 
