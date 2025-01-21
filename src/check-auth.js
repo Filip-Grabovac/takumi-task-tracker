@@ -20,7 +20,7 @@ async function checkAuth() {
 
         if (data.code === 'ERROR_CODE_UNAUTHORIZED') {
 
-            window.location.href = 'https://briliaton-com.webflow.io/login';
+            window.location.href = 'https://briliaton-com.webflow.io/log-in';
 
 
 
