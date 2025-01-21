@@ -40,6 +40,8 @@ loginButton.addEventListener('click', (e) => {
 
                 }
 
+                console.log('role_id' data.role_id)
+
             }
         });
 
