@@ -45,5 +45,4 @@ function updateButtonStyle() {
     loginButton.style.backgroundColor = "#3939e1";
   }
 }
-
 password.addEventListener("input", updateButtonStyle);

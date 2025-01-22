@@ -13,7 +13,7 @@ if (logoutBtn) {
   });
 }
 
-// Rendering projects
+// Rendering projects in side bar
 
 let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects";
 
@@ -32,4 +32,15 @@ fetch(projectsApi)
 
       dropDownList.insertAdjacentHTML("afterbegin", html);
     });
+  });
+
+// Rendering today tasks
+
+let todayTasksApi =
+  "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks";
+
+fetch(todayTasksApi)
+  .then((response) => response.json())
+  .then((tasks) => {
+    console.log(tasks);
   });
