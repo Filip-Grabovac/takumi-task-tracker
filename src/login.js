@@ -1,44 +1,42 @@
-
-'use strict';
+"use strict";
 // LOGIN //
 
-let apiMainUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb'
+let apiMainUrl = "https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb";
 
-let loginButton = document.querySelector('.form-submit-btn')
+let loginButton = document.querySelector(".form-submit-btn");
 
-loginButton.addEventListener('click', (e) => {
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
 
-    e.preventDefault()
+  let email = document.querySelector("#Email").value;
+  let password = document.querySelector("#Password").value;
 
-    let email = document.querySelector('#Email').value
-    let password = document.querySelector('#Password').value
+  let requestBody = {
+    email,
+    password,
+  };
 
-    let requestBody = {
-        email,
-        password
-    }
+  let apiEndpoint = apiMainUrl + "/auth/login";
 
-    let apiEndpoint = apiMainUrl + '/auth/login'
+  fetch(apiEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestBody),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.authToken) {
+        localStorage.setItem("authToken", data.authToken);
 
-    fetch(apiEndpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestBody)
-    })
-        .then(response => response.json())
-        .then((data) => {
-            if (data.authToken) {
-                localStorage.setItem('authToken', data.authToken);
+        window.location.href = "https://briliaton-com.webflow.io/dashboard";
+      }
+    });
 
-                window.location.href = 'https://briliaton-com.webflow.io/dashboard';
-
-            }
-        });
-
-})
-
-
-
-
+  if (!email && password.length < 5) {
+    loginButton.style.backgroundColor = "#eff4fb";
+  } else {
+    loginButton.style.backgroundColor = "#3939e1";
+  }
+});
