@@ -46,5 +46,4 @@ function updateButtonStyle() {
   }
 }
 
-email.addEventListener("input", updateButtonStyle);
 password.addEventListener("input", updateButtonStyle);
