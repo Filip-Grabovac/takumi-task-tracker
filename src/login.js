@@ -39,4 +39,6 @@ loginButton.addEventListener("click", (e) => {
   } else {
     loginButton.style.backgroundColor = "#3939e1";
   }
+
+  console.log(email, password);
 });
