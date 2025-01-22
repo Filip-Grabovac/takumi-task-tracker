@@ -5,6 +5,12 @@ let apiMainUrl = "https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb";
 
 let loginButton = document.querySelector(".form-submit-btn");
 
+if (!email.trim() && password.length < 5) {
+  loginButton.style.backgroundColor = "#eff4fb";
+} else {
+  loginButton.style.backgroundColor = "#3939e1";
+}
+
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -34,9 +40,3 @@ loginButton.addEventListener("click", (e) => {
       }
     });
 });
-
-if (!email.trim() && password.length < 5) {
-  loginButton.style.backgroundColor = "#eff4fb";
-} else {
-  loginButton.style.backgroundColor = "#3939e1";
-}
