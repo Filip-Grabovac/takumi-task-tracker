@@ -35,7 +35,7 @@ fetch(projectsApi)
 
 // Rendering today tasks
 let todayTasksApi =
-  "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks";
+  "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}";
 
 fetch(todayTasksApi)
   .then((response) => response.json())
