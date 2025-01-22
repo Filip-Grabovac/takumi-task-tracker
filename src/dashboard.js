@@ -40,6 +40,7 @@ let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_t
 fetch(todayTasksApi)
   .then((response) => response.json())
   .then((todayTasks) => {
+    console.log(todayTasks);
     todayTasks.forEach((task) => {
       const htmlCard = document.querySelector("#project-card").outerHTML;
       let cardsWrapper = document.querySelector(".white-cards-wrapper");
