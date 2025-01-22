@@ -35,17 +35,16 @@ loginButton.addEventListener("click", (e) => {
     });
 });
 
-function updateButtonStyle() {
-  let loginButton = document.querySelector(".form-submit-btn");
-  let email = document.querySelector("#Email").value;
-  let password = document.querySelector("#Password").value;
+let email = document.querySelector("#Email");
+let password = document.querySelector("#Password");
 
-  if (!email && password.length < 5) {
+function updateButtonStyle() {
+  if (!email.value && password.value.length < 5) {
     loginButton.style.backgroundColor = "#eff4fb";
   } else {
     loginButton.style.backgroundColor = "#3939e1";
   }
-
-  email.addEventListener("input", updateButtonStyle);
-  password.addEventListener("input", updateButtonStyle);
 }
+
+email.addEventListener("input", updateButtonStyle);
+password.addEventListener("input", updateButtonStyle);
