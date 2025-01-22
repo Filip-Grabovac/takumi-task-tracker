@@ -42,5 +42,5 @@ let todayTasksApi =
 fetch(todayTasksApi)
   .then((response) => response.json())
   .then((tasks) => {
-    console.log(tasks);
+    /* console.log(tasks); */
   });
