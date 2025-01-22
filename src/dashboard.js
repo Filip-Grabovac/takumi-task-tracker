@@ -20,8 +20,6 @@ let projectsApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/projects";
 fetch(projectsApi)
   .then((response) => response.json())
   .then((projects) => {
-    console.log(projects);
-
     let dropDownList = document.querySelector(".options-wrapper");
 
     projects.forEach((project) => {
