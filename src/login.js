@@ -33,12 +33,10 @@ loginButton.addEventListener("click", (e) => {
         window.location.href = "https://briliaton-com.webflow.io/dashboard";
       }
     });
-
-  if (!email.trim() && password.length < 5) {
-    loginButton.style.backgroundColor = "#eff4fb";
-  } else {
-    loginButton.style.backgroundColor = "#3939e1";
-  }
-
-  console.log(email, password);
 });
+
+if (!email.trim() && password.length < 5) {
+  loginButton.style.backgroundColor = "#eff4fb";
+} else {
+  loginButton.style.backgroundColor = "#3939e1";
+}
