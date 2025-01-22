@@ -4,6 +4,7 @@ checkAuth().then((data) => {
   }
 });
 
+// Log Out
 let logoutBtn = document.querySelector(".logout-button");
 
 if (logoutBtn) {
