@@ -34,6 +34,7 @@ fetch(projectsApi)
   });
 
 // Rendering today tasks
+let userId = localStorage.getItem("userID");
 let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}`;
 
 fetch(todayTasksApi)

@@ -29,8 +29,7 @@ loginButton.addEventListener("click", (e) => {
     .then((data) => {
       if (data.authToken) {
         localStorage.setItem("authToken", data.authToken);
-        localStorage.setItem("userID", data.authToken);
-        console.log(data);
+        localStorage.setItem("userID", data.user.id);
 
         window.location.href = "https://briliaton-com.webflow.io/dashboard";
       }
