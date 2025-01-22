@@ -39,7 +39,7 @@ let email = document.querySelector("#Email");
 let password = document.querySelector("#Password");
 
 function updateButtonStyle() {
-  if (password.value && password.value.length < 5) {
+  if (password.value.length < 5) {
     loginButton.style.backgroundColor = "#eff4fb";
   } else {
     loginButton.style.backgroundColor = "#3939e1";
