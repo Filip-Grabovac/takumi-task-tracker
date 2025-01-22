@@ -46,8 +46,6 @@ function updateButtonStyle() {
     loginButton.style.backgroundColor = "#3939e1";
   }
 
-  email.addEventListener("input", () => updateButtonStyle());
-  password.addEventListener("input", () => updateButtonStyle());
-
-  console.log(email, password);
+  email.addEventListener("input", updateButtonStyle);
+  password.addEventListener("input", updateButtonStyle);
 }
