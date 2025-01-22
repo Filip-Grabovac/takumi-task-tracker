@@ -37,15 +37,38 @@ fetch(projectsApi)
 let userId = localStorage.getItem("userID");
 let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}`;
 
+let htmlCard = document.querySelector("#project-card").outerHTML;
+
 fetch(todayTasksApi)
   .then((response) => response.json())
   .then((todayTasks) => {
-    console.log(todayTasks.today_tasks);
-    todayTasks.today_tasks.forEach((task) => {
-      const htmlCard = document.querySelector("#project-card").outerHTML;
-      let cardsWrapper = document.querySelector(".white-cards-wrapper");
-      console.log(htmlCard);
+    let cardsWrapper = document.querySelector(".white-cards-wrapper");
 
-      cardsWrapper.insertAdjacentHTML("afterbegin", htmlCard);
+    // Clear existing cards if needed
+    cardsWrapper.innerHTML = "";
+
+    todayTasks.today_tasks.forEach((task) => {
+      let card = document.createElement("div");
+      card.innerHTML = htmlCard;
+
+      // Set task details in the card
+      card.querySelector(".medium-txt").textContent = task.project.name;
+      card.querySelector(
+        ".name-member"
+      ).textContent = `${task.additional_users_info.first_name} ${task.additional_users_info.last_name}`;
+      card.querySelector(".rounded-box").style.backgroundColor =
+        task.severity_type.color_hex;
+      card.querySelector(".status-box-user .name-member").textContent =
+        task.severity_type.name;
+
+      // Add due date and description (if applicable)
+      let descriptionElement = card.querySelector(".description-class"); // Add a class in the HTML for description
+      if (descriptionElement) {
+        descriptionElement.textContent = task.description;
+      }
+
+      // Insert the card into the wrapper
+      cardsWrapper.insertAdjacentHTML("beforeend", card.innerHTML);
     });
-  });
+  })
+  .catch((error) => console.error("Error fetching tasks:", error));
