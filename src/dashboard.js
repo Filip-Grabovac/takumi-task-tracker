@@ -41,7 +41,7 @@ fetch(todayTasksApi)
   .then((response) => response.json())
   .then((todayTasks) => {
     console.log(todayTasks.today_tasks);
-    todayTasks.forEach((task) => {
+    todayTasks.today_tasks.forEach((task) => {
       const htmlCard = document.querySelector("#project-card").outerHTML;
       let cardsWrapper = document.querySelector(".white-cards-wrapper");
       console.log(htmlCard);
