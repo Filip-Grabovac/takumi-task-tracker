@@ -34,7 +34,7 @@ loginButton.addEventListener("click", (e) => {
       }
     });
 
-  if (!email && password.length < 5) {
+  if (!email.trim() && password.length < 5) {
     loginButton.style.backgroundColor = "#eff4fb";
   } else {
     loginButton.style.backgroundColor = "#3939e1";
