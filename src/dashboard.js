@@ -41,4 +41,5 @@ fetch(todayTasksApi)
   .then((response) => response.json())
   .then((tasks) => {
     console.log(tasks);
+    tasks.forEach();
   });
