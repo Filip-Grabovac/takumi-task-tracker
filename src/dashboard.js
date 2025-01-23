@@ -146,40 +146,42 @@ fetch(todayTasksApi)
 
 document.querySelectorAll(".moving-icon").forEach((icon) => {
   icon.addEventListener("mousedown", (e) => {
-    // Na početku prevlačenja, pratimo poziciju kursora
-    let startX = e.clientX;
-    let startY = e.clientY;
-
-    // Postavljamo task kao "draggable" sa stilom koji omogućava njegovo kretanje
+    e.preventDefault(); // Sprečava selektovanje teksta ili slične akcije
     const task = icon.closest(".card-button-wrapp");
-    task.classList.add("dragging"); // Dodajemo klasu koja označava da se task trenutno vuče
+    task.classList.add("dragging"); // Dodajemo klasu koja označava da je task u procesu prevlačenja
+
+    let offsetX = e.clientX - task.getBoundingClientRect().left;
+    let offsetY = e.clientY - task.getBoundingClientRect().top;
 
     const onMouseMove = (moveEvent) => {
-      // Pratimo kretanje miša i pomeramo task prema kursoru
-      const deltaX = moveEvent.clientX - startX;
-      const deltaY = moveEvent.clientY - startY;
-
-      task.style.transform = `translate(${deltaX}px, ${deltaY}px)`; // Pomera task sa mišem
+      task.style.position = "absolute"; // Postavljamo poziciju taska kao apsolutnu
+      task.style.zIndex = 1000; // Podižemo task iznad ostalih elemenata
+      task.style.left = moveEvent.clientX - offsetX + "px"; // Pomera task horizontalno
+      task.style.top = moveEvent.clientY - offsetY + "px"; // Pomera task vertikalno
     };
 
     const onMouseUp = () => {
-      // Kada se pustiti dugme miša, završavamo prevlačenje
+      // Kada se dugme miša podigne, završavamo prevlačenje
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
 
-      // Resetujemo poziciju taska
-      task.style.transform = "";
+      // Resetujemo stilove i poziciju
+      task.style.position = ""; // Vraćamo poziciju na standardnu
+      task.style.zIndex = ""; // Vraćamo z-index na default vrednost
+      task.style.left = "";
+      task.style.top = "";
 
-      // Na osnovu pozicije, proveravamo u koju kolonu je task prešao
+      // Proveravamo koja je kolona na koju je task prebačen
       const columns = document.querySelectorAll(".white-cards-wrapper");
       columns.forEach((col) => {
+        const columnRect = col.getBoundingClientRect();
         if (
-          col.getBoundingClientRect().left <= e.clientX &&
-          col.getBoundingClientRect().right >= e.clientX &&
-          col.getBoundingClientRect().top <= e.clientY &&
-          col.getBoundingClientRect().bottom >= e.clientY
+          moveEvent.clientX >= columnRect.left &&
+          moveEvent.clientX <= columnRect.right &&
+          moveEvent.clientY >= columnRect.top &&
+          moveEvent.clientY <= columnRect.bottom
         ) {
-          // Ako je task unutar kolone, pomeramo ga u odgovarajuću kolonu
+          // Dodajemo task u odgovarajuću kolonu
           col.appendChild(task);
         }
       });
@@ -187,7 +189,7 @@ document.querySelectorAll(".moving-icon").forEach((icon) => {
       task.classList.remove("dragging"); // Uklanjamo klasu nakon završetka prevlačenja
     };
 
-    // Pratimo pomeranje miša dok se dugme miša ne otpusti
+    // Dodajemo događaj za praćenje kretanja miša
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
   });
