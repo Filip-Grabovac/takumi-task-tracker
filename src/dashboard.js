@@ -86,10 +86,10 @@ fetch(todayTasksApi)
     // ID-ovi kolona za svaki status
     const statusColumns = {
       open: "open",
-      inProgress: "in_progress",
-      onHold: "on_hold",
-      waiting: "waiting_for_client",
-      readyForTest: "ready_for_testing",
+      in_progress: "in_progress",
+      on_hold: "on_hold",
+      waiting_for_client: "waiting_for_client",
+      ready_for_testing: "ready_for_testing",
       resolved: "resolved",
       closed: "closed",
       reopened: "reopened",
