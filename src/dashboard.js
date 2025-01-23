@@ -144,22 +144,19 @@ fetch(todayTasksApi)
 
 //DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
-  const dropdownToggle = document.querySelector(".card-dropdown-toggle");
-  const dropdownNav = document.querySelector(".white-card-drop-list");
+  // Selektuj sve dropdown toggle elemente
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle"); // Zameni sa stvarnim klasama
 
-  dropdownToggle.addEventListener("click", function () {
-    // Check if the dropdown is currently hidden
-    const isHidden =
-      dropdownNav.style.height === "0px" ||
-      dropdownNav.style.display === "none";
+  // Dodaj event listener za svaki toggle
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", function (event) {
+      // Pronađi najbliži nav element
+      const closestNav = toggle.closest("nav"); // Prilagodi prema strukturi HTML-a
 
-    // Toggle the dropdown visibility
-    if (isHidden) {
-      dropdownNav.style.display = "block"; // Make the dropdown visible
-      dropdownNav.style.height = "auto"; // Adjust height based on content
-    } else {
-      dropdownNav.style.display = "none"; // Hide the dropdown
-      dropdownNav.style.height = "0px"; // Collapse the height
-    }
+      // Ako nav postoji, togglej ga (otvori/zatvori)
+      if (closestNav) {
+        closestNav.classList.toggle("open"); // Dodaj/ukloni klasu koja kontroliše otvaranje
+      }
+    });
   });
 });
