@@ -143,6 +143,17 @@ fetch(todayTasksApi)
   .catch((error) => console.error("Error fetching tasks:", error));
 
 //Drag and drop task
+const statusColumns = {
+  open: "open",
+  in_progress: "in_progress",
+  on_hold: "on_hold",
+  waiting_for_client: "waiting_for_client",
+  ready_for_testing: "ready_for_testing",
+  resolved: "resolved",
+  closed: "closed",
+  reopened: "reopened",
+};
+
 let columnss = document.querySelector(`#${columnId}`);
 let movingIcon = document.querySelector(".moving-icon");
 
