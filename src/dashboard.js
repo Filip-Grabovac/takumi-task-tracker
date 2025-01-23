@@ -141,3 +141,25 @@ fetch(todayTasksApi)
     });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
+
+// Dobavljanje svih dropdown dugmadi
+const dropdownToggles = document.querySelectorAll(".card-dropdown-toggle");
+
+// Dodavanje event listener-a za svako dugme
+dropdownToggles.forEach((toggle) => {
+  toggle.addEventListener("click", function () {
+    // Dobavljanje povezane liste za trenutni dropdown
+    const dropdownList =
+      this.closest(".card-dropdown").querySelector(".w-dropdown-list");
+
+    // Ako je dropdown već otvoren, zatvori ga
+    if (
+      dropdownList.style.height === "0px" ||
+      dropdownList.style.height === ""
+    ) {
+      dropdownList.style.height = dropdownList.scrollHeight + "px"; // Otvori dropdown
+    } else {
+      dropdownList.style.height = "0px"; // Zatvori dropdown
+    }
+  });
+});
