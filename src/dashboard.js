@@ -107,13 +107,13 @@ let tasksApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/tasks";
 
 let addTaskBtn = document.querySelector("#task-btn");
 
-let severities = {
+/* let severities = {
   Normal: "1",
   Trivial: "2",
   Major: "3",
   Blocking: "4",
   Immediate: "5",
-};
+}; */
 
 addTaskBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -121,7 +121,7 @@ addTaskBtn.addEventListener("click", (e) => {
   let assigneTo = document.querySelector("#assigne-user").value;
   let statusSelect = document.querySelector("#status-select").value;
   let taskDescript = document.querySelector("#descript-task").value;
-  let severity = document.querySelector("#severity-select").value;
+  let severity = Number(document.querySelector("#severity-select").value);
 
   let requestBody = {
     assigneTo,
