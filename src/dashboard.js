@@ -85,14 +85,14 @@ fetch(todayTasksApi)
     console.log(todayTasks);
     // ID-ovi kolona za svaki status
     const statusColumns = {
-      open: "status-open",
-      inProgress: "status-inProgress",
-      onHold: "status-onHold",
-      waiting: "status-waiting",
-      readyForTest: "status-ReadyForTest",
-      resolved: "status-resolved",
-      closed: "status-closed",
-      reopened: "status-reopened",
+      open: "open",
+      inProgress: "in_progress",
+      onHold: "on_hold",
+      waiting: "waiting_for_client",
+      readyForTest: "ready_for_testing",
+      resolved: "resolved",
+      closed: "closed",
+      reopened: "reopened",
     };
 
     // Čišćenje svih kolona pre dodavanja novih kartica
@@ -121,7 +121,7 @@ fetch(todayTasksApi)
       }
       console.log(task);
       // Proveravanje statusa i dodavanje u odgovarajuću kolonu
-      let taskStatus = task.status; // Pretpostavljam da je "status" polje u API-ju
+      let taskStatus = task.status_type.code; // Pretpostavljam da je "status" polje u API-ju
       let columnId = statusColumns[taskStatus]; // Dohvati ID kolone za zadati status
 
       if (columnId) {
