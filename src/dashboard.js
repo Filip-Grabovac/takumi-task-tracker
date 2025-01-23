@@ -82,6 +82,7 @@ let htmlCard = document.querySelector("#project-card").outerHTML;
 fetch(todayTasksApi)
   .then((response) => response.json())
   .then((todayTasks) => {
+    console.log(todayTasks);
     // ID-ovi kolona za svaki status
     const statusColumns = {
       open: "status-open",
@@ -134,7 +135,5 @@ fetch(todayTasksApi)
         console.warn(`Nepoznat status zadatka: ${taskStatus}`);
       }
     });
-
-    console.log(todayTasks);
   })
   .catch((error) => console.error("Error fetching tasks:", error));
