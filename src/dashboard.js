@@ -147,8 +147,8 @@ fetch(todayTasksApi)
 let columnss = document.querySelector(`#${columnId}`);
 let movingIcon = document.querySelector(".moving-icon");
 
-movingIcon.addEventListener("click", (element) => {
-  movingIcon = element.closest(".card-button-wrapp");
+movingIcon.addEventListener("click", (event) => {
+  const cardButtonWrapper = event.target.closest(".card-button-wrapp");
 
-  console.log(element);
+  console.log(cardButtonWrapper); // Prikazuje element sa klasom .card-button-wrapp
 });
