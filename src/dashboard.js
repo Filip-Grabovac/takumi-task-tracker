@@ -143,5 +143,7 @@ fetch(todayTasksApi)
   .catch((error) => console.error("Error fetching tasks:", error));
 
 //Drag and drop task
-
 let columnss = document.querySelector(`#${columnId}`);
+let movingIcon = document.querySelector(".moving-icon");
+
+console.log(movingIcon.closest(".card-button-wrapp"));
