@@ -141,3 +141,25 @@ fetch(todayTasksApi)
     });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
+
+//DROPDOWN
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownToggle = document.querySelector(".card-dropdown-toggle");
+  const dropdownNav = document.querySelector(".white-card-drop-list");
+
+  dropdownToggle.addEventListener("click", function () {
+    // Check if the dropdown is currently hidden
+    const isHidden =
+      dropdownNav.style.height === "0px" ||
+      dropdownNav.style.display === "none";
+
+    // Toggle the dropdown visibility
+    if (isHidden) {
+      dropdownNav.style.display = "block"; // Make the dropdown visible
+      dropdownNav.style.height = "auto"; // Adjust height based on content
+    } else {
+      dropdownNav.style.display = "none"; // Hide the dropdown
+      dropdownNav.style.height = "0px"; // Collapse the height
+    }
+  });
+});
