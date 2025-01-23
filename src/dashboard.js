@@ -134,5 +134,7 @@ fetch(todayTasksApi)
         console.warn(`Nepoznat status zadatka: ${taskStatus}`);
       }
     });
+
+    console.log(todayTasks);
   })
   .catch((error) => console.error("Error fetching tasks:", error));
