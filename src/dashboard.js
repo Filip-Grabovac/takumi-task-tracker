@@ -141,3 +141,54 @@ fetch(todayTasksApi)
     });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
+
+//Drag and drop task
+
+document.querySelectorAll(".moving-icon").forEach((icon) => {
+  icon.addEventListener("mousedown", (e) => {
+    // Na početku prevlačenja, pratimo poziciju kursora
+    let startX = e.clientX;
+    let startY = e.clientY;
+
+    // Postavljamo task kao "draggable" sa stilom koji omogućava njegovo kretanje
+    const task = icon.closest(".card-button-wrapp");
+    task.classList.add("dragging"); // Dodajemo klasu koja označava da se task trenutno vuče
+
+    const onMouseMove = (moveEvent) => {
+      // Pratimo kretanje miša i pomeramo task prema kursoru
+      const deltaX = moveEvent.clientX - startX;
+      const deltaY = moveEvent.clientY - startY;
+
+      task.style.transform = `translate(${deltaX}px, ${deltaY}px)`; // Pomera task sa mišem
+    };
+
+    const onMouseUp = () => {
+      // Kada se pustiti dugme miša, završavamo prevlačenje
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+
+      // Resetujemo poziciju taska
+      task.style.transform = "";
+
+      // Na osnovu pozicije, proveravamo u koju kolonu je task prešao
+      const columns = document.querySelectorAll(".white-cards-wrapper");
+      columns.forEach((col) => {
+        if (
+          col.getBoundingClientRect().left <= e.clientX &&
+          col.getBoundingClientRect().right >= e.clientX &&
+          col.getBoundingClientRect().top <= e.clientY &&
+          col.getBoundingClientRect().bottom >= e.clientY
+        ) {
+          // Ako je task unutar kolone, pomeramo ga u odgovarajuću kolonu
+          col.appendChild(task);
+        }
+      });
+
+      task.classList.remove("dragging"); // Uklanjamo klasu nakon završetka prevlačenja
+    };
+
+    // Pratimo pomeranje miša dok se dugme miša ne otpusti
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+});
