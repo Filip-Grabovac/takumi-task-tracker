@@ -138,8 +138,9 @@ fetch(todayTasksApi)
       } else {
         console.warn(`Nepoznat status zadatka: ${taskStatus}`);
       }
+    });
 
-      // Ponovno inicijalizovanje dropdown-a nakon što se DOM promeni
+    Webflow.push(function () {
       Webflow.require("dropdown").init();
     });
   })
