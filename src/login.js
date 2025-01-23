@@ -36,7 +36,7 @@ loginButton.addEventListener("click", (e) => {
     });
 });
 
-/* let email = document.querySelector("#Email");
+let email = document.querySelector("#Email");
 let password = document.querySelector("#Password");
 
 function updateButtonStyle() {
@@ -46,4 +46,4 @@ function updateButtonStyle() {
     loginButton.style.backgroundColor = "#3939e1";
   }
 }
-password.addEventListener("input", updateButtonStyle); */
+password.addEventListener("input", updateButtonStyle);
