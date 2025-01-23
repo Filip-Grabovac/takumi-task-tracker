@@ -111,9 +111,6 @@ fetch(todayTasksApi)
       ).textContent = `${task.additional_users_info.first_name} ${task.additional_users_info.last_name}`;
       card.querySelector(".rounded-box").style.backgroundColor =
         task.severity_type.color_hex;
-      card.querySelector(".status-box-user .name-member").textContent =
-        task.severity_type.name;
-
       card.querySelector(".status-box-user #severity-option").textContent =
         task.severity_type.name;
 
