@@ -118,10 +118,10 @@ let severities = {
 addTaskBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let assigneTo = document.querySelector("#assigne-user");
-  let statusSelect = document.querySelector("#status-select");
-  let taskDescript = document.querySelector("#descript-task");
-  let severity = document.querySelector("#severity-select");
+  let assigneTo = document.querySelector("#assigne-user").value;
+  let statusSelect = document.querySelector("#status-select").value;
+  let taskDescript = document.querySelector("#descript-task").value;
+  let severity = document.querySelector("#severity-select").value;
 
   let requestBody = {
     assigneTo,
