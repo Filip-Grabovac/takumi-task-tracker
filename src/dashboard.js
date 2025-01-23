@@ -97,7 +97,6 @@ fetch(todayTasksApi)
 
     // Čišćenje svih kolona pre dodavanja novih kartica
     Object.values(statusColumns).forEach((columnId) => {
-      console.log(document.querySelector(`#${columnId}`));
       document.querySelector(`#${columnId}`).innerHTML = "";
     });
 
@@ -120,7 +119,7 @@ fetch(todayTasksApi)
       if (descriptionElement) {
         descriptionElement.textContent = task.description;
       }
-
+      console.log(task);
       // Proveravanje statusa i dodavanje u odgovarajuću kolonu
       let taskStatus = task.status; // Pretpostavljam da je "status" polje u API-ju
       let columnId = statusColumns[taskStatus]; // Dohvati ID kolone za zadati status
