@@ -138,9 +138,9 @@ fetch(todayTasksApi)
       } else {
         console.warn(`Nepoznat status zadatka: ${taskStatus}`);
       }
-    });
 
-    // Ponovno inicijalizovanje dropdown-a nakon što se DOM promeni
-    Webflow.require("dropdown").init();
+      // Ponovno inicijalizovanje dropdown-a nakon što se DOM promeni
+      Webflow.require("dropdown").init();
+    });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
