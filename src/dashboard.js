@@ -145,21 +145,26 @@ fetch(todayTasksApi)
 // Dobavljanje svih dropdown dugmadi
 const dropdownToggles = document.querySelectorAll(".card-dropdown-toggle");
 
-// Dodavanje event listener-a za svako dugme
+// Odaberi sva dugmadi koja otvaraju/zakrivaju dropdown
+const dropdownToggles = document.querySelectorAll(".card-dropdown-toggle");
+
+// Dodaj event listener za svaki od tih dugmadi
 dropdownToggles.forEach((toggle) => {
   toggle.addEventListener("click", function () {
-    // Dobavljanje povezane liste za trenutni dropdown
-    const dropdownList =
+    // Pronađi nav element (dropdown) koji je najbliži ovom dugmetu
+    const dropdownMenu =
       this.closest(".card-dropdown").querySelector(".w-dropdown-list");
 
-    // Ako je dropdown već otvoren, zatvori ga
+    // Proveri trenutnu visinu dropdown-a i na osnovu toga ga otvori/zatvori
     if (
-      dropdownList.style.height === "0px" ||
-      dropdownList.style.height === ""
+      dropdownMenu.style.height === "0px" ||
+      dropdownMenu.style.height === ""
     ) {
-      dropdownList.style.height = dropdownList.scrollHeight + "px"; // Otvori dropdown
+      // Otvori dropdown
+      dropdownMenu.style.height = "auto"; // Podesi visinu prema sadržaju
     } else {
-      dropdownList.style.height = "0px"; // Zatvori dropdown
+      // Zatvori dropdown
+      dropdownMenu.style.height = "0px";
     }
   });
 });
