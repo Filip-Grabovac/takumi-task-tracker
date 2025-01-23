@@ -97,6 +97,7 @@ fetch(todayTasksApi)
 
     // Čišćenje svih kolona pre dodavanja novih kartica
     Object.values(statusColumns).forEach((columnId) => {
+      console.log(columnId);
       document.querySelector(`#${columnId}`).innerHTML = "";
     });
 
