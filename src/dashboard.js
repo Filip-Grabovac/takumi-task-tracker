@@ -113,23 +113,7 @@ fetch(todayTasksApi)
         task.severity_type.color_hex;
       card.querySelector(".status-box-user .name-member").textContent =
         task.severity_type.name;
-      //dropdown
-      // Selektuj sve dropdown toggle elemente
-      const dropdownToggles = document.querySelectorAll(".dropdown-toggle"); // Zameni sa stvarnim klasama
 
-      // Dodaj event listener za svaki toggle
-      dropdownToggles.forEach((toggle) => {
-        toggle.addEventListener("click", function (event) {
-          // Pronađi najbliži nav element
-          const closestNav = toggle.closest("nav"); // Prilagodi prema strukturi HTML-a
-
-          // Ako nav postoji, togglej ga (otvori/zatvori)
-          if (closestNav) {
-            closestNav.classList.toggle("open"); // Dodaj/ukloni klasu koja kontroliše otvaranje
-          }
-        });
-      });
-      //////
       // Dodavanje opisa (ako postoji)
       let descriptionElement = card.querySelector(".description-class");
       if (descriptionElement) {
