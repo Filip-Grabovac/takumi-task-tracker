@@ -122,7 +122,9 @@ fetch(todayTasksApi)
       console.log(task);
       // Proveravanje statusa i dodavanje u odgovarajuću kolonu
       let taskStatus = task.status_type.code; // Pretpostavljam da je "status" polje u API-ju
+      console.log(taskStatus);
       let columnId = statusColumns[taskStatus]; // Dohvati ID kolone za zadati status
+      console.log(columnId);
 
       if (columnId) {
         let column = document.querySelector(`#${columnId}`);
