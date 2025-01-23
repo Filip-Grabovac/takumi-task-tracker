@@ -34,7 +34,7 @@ fetch(projectsApi)
   });
 
 // Rendering today tasks
-let userId = localStorage.getItem("userID");
+/* let userId = localStorage.getItem("userID");
 let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}`;
 
 let htmlCard = document.querySelector("#project-card").outerHTML;
@@ -69,6 +69,70 @@ fetch(todayTasksApi)
 
       // Insert the card into the wrapper
       cardsWrapper.insertAdjacentHTML("beforeend", card.innerHTML);
+    });
+  })
+  .catch((error) => console.error("Error fetching tasks:", error)); */
+
+// Rendering today tasks
+let userId = localStorage.getItem("userID");
+let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}`;
+
+let htmlCard = document.querySelector("#project-card").outerHTML;
+
+fetch(todayTasksApi)
+  .then((response) => response.json())
+  .then((todayTasks) => {
+    // ID-ovi kolona za svaki status
+    const statusColumns = {
+      open: "status-open",
+      inProgress: "status-inProgress",
+      onHold: "status-onHold",
+      waiting: "status-waiting",
+      readyForTest: "status-ReadyForTest",
+      resolved: "status-resolved",
+      closed: "status-closed",
+      reopened: "status-reopened",
+    };
+
+    // Čišćenje svih kolona pre dodavanja novih kartica
+    Object.values(statusColumns).forEach((columnId) => {
+      document.querySelector(`#${columnId}`).innerHTML = "";
+    });
+
+    todayTasks.today_tasks.forEach((task) => {
+      let card = document.createElement("div");
+      card.innerHTML = htmlCard;
+
+      // Postavljanje detalja zadatka
+      card.querySelector(".medium-txt").textContent = task.project.name;
+      card.querySelector(
+        ".name-member"
+      ).textContent = `${task.additional_users_info.first_name} ${task.additional_users_info.last_name}`;
+      card.querySelector(".rounded-box").style.backgroundColor =
+        task.severity_type.color_hex;
+      card.querySelector(".status-box-user .name-member").textContent =
+        task.severity_type.name;
+
+      // Dodavanje opisa (ako postoji)
+      let descriptionElement = card.querySelector(".description-class");
+      if (descriptionElement) {
+        descriptionElement.textContent = task.description;
+      }
+
+      // Proveravanje statusa i dodavanje u odgovarajuću kolonu
+      let taskStatus = task.status; // Pretpostavljam da je "status" polje u API-ju
+      let columnId = statusColumns[taskStatus]; // Dohvati ID kolone za zadati status
+
+      if (columnId) {
+        let column = document.querySelector(`#${columnId}`);
+        if (column) {
+          column.insertAdjacentHTML("beforeend", card.innerHTML);
+        } else {
+          console.warn(`Kolona sa ID-jem ${columnId} nije pronađena.`);
+        }
+      } else {
+        console.warn(`Nepoznat status zadatka: ${taskStatus}`);
+      }
     });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
