@@ -101,3 +101,40 @@ fetch(todayTasksApi)
     });
   })
   .catch((error) => console.error("Error fetching tasks:", error));
+
+//Add new task
+let tasksApi = "https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/tasks";
+
+let addTaskBtn = document.querySelector("#task-btn");
+
+let severities = {
+  Normal: "1",
+  Trivial: "2",
+  Major: "3",
+  Blocking: "4",
+  Immediate: "5",
+};
+
+addTaskBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let assigneTo = document.querySelector("#assigne-user");
+  let statusSelect = document.querySelector("#status-select");
+  let taskDescript = document.querySelector("#descript-task");
+  let severity = document.querySelector("#severity-select");
+
+  let requestBody = {
+    assigneTo,
+    statusSelect,
+    taskDescript,
+    severity,
+  };
+
+  fetch(tasksApi, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(requestBody),
+  }).then((response) => response.json);
+});
