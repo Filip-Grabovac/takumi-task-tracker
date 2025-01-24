@@ -115,6 +115,14 @@ let addTaskBtn = document.querySelector("#task-btn");
   Immediate: "5",
 }; */
 
+let severities = {
+  Normal: 1,
+  Trivial: 2,
+  Major: 3,
+  Blocking: 4,
+  Immediate: 5,
+};
+
 addTaskBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
