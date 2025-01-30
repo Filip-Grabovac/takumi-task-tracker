@@ -11,39 +11,10 @@ loginButton.addEventListener("click", (e) => {
   let email = document.querySelector("#Email").value;
   let password = document.querySelector("#Password").value;
 
-  let requestBody = {
-    email,
-    password,
-  };
-
-  let apiEndpoint = apiMainUrl + "/auth/login";
-
-  fetch(apiEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestBody),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.authToken) {
-        localStorage.setItem("authToken", data.authToken);
-        localStorage.setItem("userID", data.user.id);
-
-        window.location.href = "https://briliaton-com.webflow.io/dashboard";
-      }
-    });
+  // User.login(email, password)
 });
 
 let email = document.querySelector("#Email");
 let password = document.querySelector("#Password");
 
-function updateButtonStyle() {
-  if (password.value.length < 5) {
-    loginButton.style.backgroundColor = "#eff4fb";
-  } else {
-    loginButton.style.backgroundColor = "#3939e1";
-  }
-}
-password.addEventListener("input", updateButtonStyle);
+// password.addEventListener("input", () => {User.loginPassValidation(password)});
