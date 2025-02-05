@@ -16,4 +16,4 @@ loginButton.addEventListener("click", (e) => {
 
 // validate password while typing (input value being changed)
 let password = document.querySelector("#Password");
-password.addEventListener("input", () => {user.loginPassValidation(password)});
+password.addEventListener("input", () => {user.loginPassValidation(loginButton, password)});

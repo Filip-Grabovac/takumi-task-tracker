@@ -49,7 +49,7 @@ export default class User {
 
     }
 
-    loginPassValidation(password) {
+    loginPassValidation(loginButton, password) {
         if (password.value.length < 5) {
             loginButton.style.backgroundColor = "#eff4fb";
         } else {
