@@ -50,6 +50,7 @@ export default class User {
     }
 
     loginPassValidation(loginButton, password) {
+        let loginButton = loginButton
         if (password.value.length < 5) {
             loginButton.style.backgroundColor = "#eff4fb";
         } else {
