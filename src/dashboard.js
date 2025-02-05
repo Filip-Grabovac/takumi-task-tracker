@@ -1,8 +1,9 @@
+const auth = new Auth();
 const user = new User();
 const project = new Project();
 const task = new Task();
 
-checkAuth().then((data) => {
+auth.checkAuth().then((data) => {
   if (data.role_id !== 1) {
     document.querySelector(".add-project-btn").remove();
   }
