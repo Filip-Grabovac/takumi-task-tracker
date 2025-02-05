@@ -1,49 +1,18 @@
 "use strict";
 // LOGIN //
 
-let apiMainUrl = "https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb";
+const user = new User();
 
 let loginButton = document.querySelector(".form-submit-btn");
-
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
 
   let email = document.querySelector("#Email").value;
   let password = document.querySelector("#Password").value;
 
-  let requestBody = {
-    email,
-    password,
-  };
-
-  let apiEndpoint = apiMainUrl + "/auth/login";
-
-  fetch(apiEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestBody),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.authToken) {
-        localStorage.setItem("authToken", data.authToken);
-        localStorage.setItem("userID", data.user.id);
-
-        window.location.href = "https://briliaton-com.webflow.io/dashboard";
-      }
-    });
+  user.login(email, password)
 });
 
-let email = document.querySelector("#Email");
+// validate password while typing (input value being changed)
 let password = document.querySelector("#Password");
-
-function updateButtonStyle() {
-  if (password.value.length < 5) {
-    loginButton.style.backgroundColor = "#eff4fb";
-  } else {
-    loginButton.style.backgroundColor = "#3939e1";
-  }
-}
-password.addEventListener("input", updateButtonStyle);
+password.addEventListener("input", () => {user.loginPassValidation(password)});
