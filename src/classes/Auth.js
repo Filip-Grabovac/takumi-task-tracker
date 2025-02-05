@@ -1,4 +1,4 @@
-class Auth {
+export default class Auth {
 
     checkAuth() {
         // Preuzimanje tokena iz local storage

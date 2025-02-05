@@ -1,4 +1,4 @@
-class User {
+export default class User {
     baseApiUrl = 'https://x8ki-letl-twmt.n7.xano.io/api:Q7_040cb';
     email;
     #authToken;

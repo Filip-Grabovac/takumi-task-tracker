@@ -1,4 +1,4 @@
-class Project {
+export default class Project {
 
     // Render projects in the sidebar
     sidebarGetProjects() {

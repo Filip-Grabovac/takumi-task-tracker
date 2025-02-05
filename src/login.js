@@ -1,3 +1,4 @@
+import User from './classes/User.js'
 "use strict";
 // LOGIN //
 

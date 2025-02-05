@@ -1,4 +1,6 @@
-class Task extends User {
+import User from './User'
+
+export default class Task extends User {
 
     getTodayTasks() {
         let userId = this.userId;

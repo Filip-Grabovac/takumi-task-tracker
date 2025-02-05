@@ -1,3 +1,8 @@
+import Auth from './classes/Auth'
+import User from './classes/User'
+import Project from './classes/Project'
+import Task from './classes/Task'
+
 const auth = new Auth();
 const user = new User();
 const project = new Project();
