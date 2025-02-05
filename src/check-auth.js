@@ -25,7 +25,7 @@ async function checkAuth() {
     // Vraćanje odgovora sa servera
     return data;
   } catch (error) {
-    console.error("Greška pri pozivanju API-ja:", error);
+    console.error("Error connectin with API: ", error);
   }
 }
 

@@ -1,3 +1,7 @@
+const user = new User();
+const project = new Project();
+const task = new Task();
+
 checkAuth().then((data) => {
   if (data.role_id !== 1) {
     document.querySelector(".add-project-btn").remove();
@@ -9,15 +13,15 @@ let logoutBtn = document.querySelector(".logout-button");
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
-    // User.logout()
+    user.logout()
   });
 }
 
 // Rendering projects in side bar
-// Project.sidebarGetProjects()
+project.sidebarGetProjects()
 
 // Rendering today tasks
-// Task.getTodayTasks()
+task.getTodayTasks()
 
 //Add new task
 let addTaskBtn = document.querySelector("#task-btn");
@@ -29,5 +33,5 @@ addTaskBtn.addEventListener("click", (e) => {
   let taskDescript = document.querySelector("#descript-task");
   let severity = Number(document.querySelector("#severity-select"));
 
-  // Task.addNewTask()
+  task.addNewTask(assignTo, statusSelect, taskDescript, severity)
 });
