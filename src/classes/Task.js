@@ -11,7 +11,6 @@ export default class Task extends User {
         fetch(todayTasksApi)
         .then((response) => response.json())
         .then((todayTasks) => {
-            console.log(todayTasks);
             // ID-ovi kolona za svaki status
             const statusColumns = {
             open: "open",

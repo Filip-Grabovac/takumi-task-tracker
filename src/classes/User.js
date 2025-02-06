@@ -19,6 +19,10 @@ export default class User {
             inputEmail,
             inputPassword,
         };
+
+        console.log("Api endpoint: ", apiEndpoint)
+
+        console.log("Body request: ", requestBody);
     
         fetch(apiEndpoint, {
             method: "POST",
