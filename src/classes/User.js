@@ -20,8 +20,6 @@ export default class User {
             password: inputPassword,
         };
 
-        console.log("Api endpoint: ", apiEndpoint)
-
         console.log("Body request: ", requestBody);
     
         fetch(apiEndpoint, {
@@ -34,12 +32,12 @@ export default class User {
         .then((response) => response.json())
         .then((data) => {
             if (data.authToken) {
-            localStorage.setItem("authToken", data.authToken);
-            localStorage.setItem("userID", data.user.id);
-            this.#authToken = data.authToken;
-            this.userId = data.user.id;
-    
-            window.location.href = "https://briliaton-com.webflow.io/dashboard";
+                localStorage.setItem("authToken", data.authToken);
+                localStorage.setItem("userID", data.user.id);
+                this.#authToken = data.authToken;
+                this.userId = data.user.id;
+        
+                window.location.href = "https://briliaton-com.webflow.io/dashboard";
             }
         });
     }
