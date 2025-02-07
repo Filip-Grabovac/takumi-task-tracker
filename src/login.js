@@ -1,6 +1,11 @@
 import User from './classes/User.js'
+import Auth from './classes/Auth.js'
 "use strict";
 // LOGIN //
+
+const auth = new Auth();
+
+auth.checkAuth();
 
 const user = new User();
 
