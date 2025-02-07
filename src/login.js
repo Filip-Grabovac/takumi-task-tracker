@@ -1,5 +1,4 @@
 import User from './classes/User.js'
-import Auth from './classes/Auth.js'
 "use strict";
 // LOGIN //
 
