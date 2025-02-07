@@ -16,8 +16,8 @@ export default class User {
         let inputPassword = password
 
         let requestBody = {
-            email,
-            password,
+            email: inputEmail,
+            password: inputPassword,
         };
 
         console.log("Api endpoint: ", apiEndpoint)
