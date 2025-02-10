@@ -3,7 +3,7 @@ import User from './User.js'
 export default class Task extends User {
 
     getTodayTasks() {
-        let userId = this.userId;
+        let userId = localStorage.getItem("userID");
         let todayTasksApi = `https://x8ki-letl-twmt.n7.xano.io/api:ganIP79_/get_todays_tasks?user_id=${userId}`;
 
         let htmlCard = document.querySelector("#project-card").outerHTML;
