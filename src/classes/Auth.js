@@ -1,11 +1,11 @@
 export default class Auth {
-
-    checkAuth() {
+    async checkAuth() {
         // Preuzimanje tokena iz local storage
         const authToken = localStorage.getItem("authToken");
 
-        if(authToken === '') {
+        if (!authToken) { 
             window.location.href = "https://briliaton-com.webflow.io/log-in";
+            return;
         }
 
         // Postavljanje URL-a API endpointa
@@ -13,25 +13,28 @@ export default class Auth {
 
         try {
             // Slanje GET zahteva sa tokenom u Authorization headeru
-            const response = fetch(apiUrl, {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${authToken}`,
-            },
+            const response = await fetch(apiUrl, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                },
             });
 
-            // Čekanje na odgovor i konvertovanje u JSON
-            const data = response.json();
-
-            if (data.code === "ERROR_CODE_UNAUTHORIZED") {
-            window.location.href = "https://briliaton-com.webflow.io/log-in";
+            // Provera da li je odgovor uspešan (status 200–299)
+            if (!response.ok) {
+                throw new Error("API request failed");
             }
 
-            // Vraćanje odgovora sa servera
+            // Čekanje na odgovor i konvertovanje u JSON
+            const data = await response.json();
+
+            if (data.code === "ERROR_CODE_UNAUTHORIZED") {
+                window.location.href = "https://briliaton-com.webflow.io/log-in";
+            }
+
             return data;
         } catch (error) {
-            console.error("Error connectin with API: ", error);
+            console.error("Error connecting with API:", error);
         }
     }
-
 }
