@@ -1,7 +1,7 @@
-import Auth from './classes/Auth'
-import User from './classes/User'
-import Project from './classes/Project'
-import Task from './classes/Task'
+import Auth from './classes/Auth.js'
+import User from './classes/User.js'
+import Project from './classes/Project.js'
+import Task from './classes/Task.js'
 
 const auth = new Auth();
 const user = new User();
